@@ -3,6 +3,7 @@ const express = require('express');
 const dotenv = require('dotenv')
 
 // Import files
+const routes = require('./routes/tasks')
 const connectDB = require('./config/db')
 
 
@@ -15,7 +16,7 @@ const app = express();
 
 
 // Middlewares
-
+app.use('api/v1/task', routes)
 
 
 
