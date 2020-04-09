@@ -1,17 +1,18 @@
+const asyncHandler = require('../middlewares/async')
 const Tasks = require('../modals/tasks');
 
 
 // @desc  :   get all Tasks(GET)
 // @route :   api/v1/tasks
 // @access :  public
-exports.getAllTasks = async(req, res) =>{
+exports.getAllTasks = asyncHandler(async(req, res) =>{
     const totalTasks = await Tasks.find()
     res.status(200).json({
         success : true,
         data : totalTasks
     })
 
-}
+});
 
 
 
@@ -19,7 +20,7 @@ exports.getAllTasks = async(req, res) =>{
 // @desc  :   create new task(POST)
 // @route :   api/v1/task
 // @access :  public
-exports.createTask = async(req, res) =>{
+exports.createTask = asyncHandler(async(req, res) =>{
     const  newTask  = req.body;
     const aTask = await Tasks.create(newTask)
     res.status(200).json({
@@ -28,7 +29,7 @@ exports.createTask = async(req, res) =>{
 
     })
     
-}
+})
 
 
 
@@ -36,7 +37,7 @@ exports.createTask = async(req, res) =>{
 // @desc  :   Delete a task(Delete)
 // @route :   api/v1/task
 // @access :  public
-exports.deleteTask = async(req, res) =>{
+exports.deleteTask = asyncHandler(async(req, res) =>{
     const id = req.params.id;
     const dTask = await Tasks.findByIdAndDelete(id);
     res.status(200).json({
@@ -44,7 +45,7 @@ exports.deleteTask = async(req, res) =>{
         data : dTask
     })
 
-}
+})
 
 
 
