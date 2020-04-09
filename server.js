@@ -1,9 +1,10 @@
 // Import libraries 
 const express = require('express');
-const dotenv = require('dotenv')
+const dotenv = require('dotenv');
+const bodyParser = require('body-parser')
 
 // Import files
-const routes = require('./routes/tasks')
+const tasks = require('./routes/tasks')
 const connectDB = require('./config/db')
 
 
@@ -16,7 +17,8 @@ const app = express();
 
 
 // Middlewares
-app.use('api/v1/task', routes)
+app.use(express.json());
+app.use('/api/task', tasks)
 
 
 

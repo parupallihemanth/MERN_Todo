@@ -5,6 +5,11 @@ const Tasks = require('../modals/tasks');
 // @route :   api/v1/tasks
 // @access :  public
 exports.getAllTasks = async(req, res) =>{
+    const totalTasks = await Tasks.find()
+    res.status(200).json({
+        success : true,
+        data : totalTasks
+    })
 
 }
 
@@ -15,6 +20,13 @@ exports.getAllTasks = async(req, res) =>{
 // @route :   api/v1/task
 // @access :  public
 exports.createTask = async(req, res) =>{
+    const  newTask  = req.body;
+    const aTask = await Tasks.create(newTask)
+    res.status(200).json({
+        success : true,
+        data : aTask
+
+    })
     
 }
 
@@ -25,6 +37,12 @@ exports.createTask = async(req, res) =>{
 // @route :   api/v1/task
 // @access :  public
 exports.deleteTask = async(req, res) =>{
+    const id = req.params.id;
+    const dTask = await Tasks.findByIdAndDelete(id);
+    res.status(200).json({
+        success : true,
+        data : dTask
+    })
 
 }
 

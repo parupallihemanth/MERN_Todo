@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-import { getAllTasks, createTask, deleteTask } from '../controllers/tasks';
+const { getAllTasks, createTask, deleteTask } = require('../controllers/tasks');
 
 
 router.route('/')
