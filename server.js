@@ -1,6 +1,8 @@
 // Import libraries 
 const express = require('express');
 const dotenv = require('dotenv');
+const cors = require('cors')
+const errHandler = require('./middlewares/error')
 const bodyParser = require('body-parser')
 
 // Import files
@@ -18,7 +20,9 @@ const app = express();
 
 // Middlewares
 app.use(express.json());
-app.use('/api/task', tasks)
+app.use(cors())
+app.use('/api/task', tasks);
+app.use(errHandler);
 
 
 
