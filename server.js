@@ -1,6 +1,6 @@
 // Import libraries 
-const express = require('express');
 const dotenv = require('dotenv');
+const express = require('express');
 const cors = require('cors')
 const errHandler = require('./middlewares/error')
 const bodyParser = require('body-parser')
@@ -11,7 +11,7 @@ const connectDB = require('./config/db')
 
 
 // get the config file
-dotenv.config({path:'./config/config.env'});
+dotenv.config({path:'./config/.env'});
 connectDB();
 
 // creating server
